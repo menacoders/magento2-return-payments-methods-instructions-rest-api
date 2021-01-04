@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Menacoders\Instructions\Api\GuestPaymentMethodManagementInterface"
+                type="Menacoders\Instructions\Model\GuestCart\GuestPaymentMethodManagement" />
+    <preference for="Menacoders\Instructions\Api\Data\PaymentMethodsInterface"
+                type="Menacoders\Instructions\Model\Data\PaymentMethods" />
+    <preference for="Menacoders\Instructions\Api\Data\DataInterface"
+                type="Menacoders\Instructions\Model\Data\Data" />
+
+    <!-- Logged In user-->
+    <preference for="Menacoders\Instructions\Api\PaymentInformationManagementInterface"
+                type="Menacoders\Instructions\Model\PaymentInformationManagement" />
+    <preference for="Menacoders\Instructions\Api\Data\PaymentDetailsInterface"
+                type="Menacoders\Instructions\Model\PaymentDetails" />
+
+    <type name="Magento\Quote\Model\ShippingMethodManagement">
+        <plugin name="menacoders_instructions_model_shipping_method_management"
+                type="Menacoders\Instructions\Plugin\Model\ShippingMethodManagement"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+</config>

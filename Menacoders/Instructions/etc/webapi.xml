@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- Get payment information for guest user -->
+    <route url="/V1/mena-guest-carts/:cartId/payment-methods" method="GET">
+        <service class="Menacoders\Instructions\Api\GuestPaymentMethodManagementInterface" method="getPaymentMethodsList"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+
+    <!-- Get payment information -->
+    <route url="/V1/mena-carts/mine/payment-information" method="GET">
+        <service class="Menacoders\Instructions\Api\PaymentInformationManagementInterface" method="getPaymentInformation"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+</routes>
